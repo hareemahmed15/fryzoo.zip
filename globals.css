@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-white text-ink-900; }
+  h1, h2, h3 { @apply font-display; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+}
+
+@layer components {
+  .container-x { @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8; }
+
+  .btn, .btn-primary, .btn-dark, .btn-outline, .btn-danger, .btn-yellow {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold transition
+           active:scale-95 disabled:cursor-not-allowed disabled:opacity-50
+           focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-300;
+  }
+  .btn-primary { @apply bg-brand-600 text-white hover:bg-brand-700; }
+  .btn-dark    { @apply bg-ink-900 text-white hover:bg-ink-700; }
+  .btn-yellow  { @apply bg-sun-400 text-ink-900 hover:bg-sun-300; }
+  .btn-outline { @apply border-2 border-ink-900 bg-transparent text-ink-900 hover:bg-ink-900 hover:text-white; }
+  .btn-danger  { @apply bg-white text-brand-700 ring-2 ring-brand-600 hover:bg-brand-50; }
+
+  .input {
+    @apply w-full rounded-xl border-2 border-ink-900/15 bg-white px-4 py-3 text-base outline-none transition
+           placeholder:text-ink-900/40 focus:border-brand-600 focus:ring-4 focus:ring-brand-100;
+  }
+  .input-error { @apply border-brand-600; }
+  .label { @apply mb-1.5 block text-sm font-bold; }
+  .field-error { @apply mt-1.5 text-sm font-medium text-brand-700; }
+  .panel { @apply rounded-2xl border-2 border-ink-900/10 bg-white p-5 sm:p-6; }
+}
